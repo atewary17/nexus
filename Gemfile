@@ -55,3 +55,8 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'slim-rails'
 gem 'responders'
+gem 'devise', '~> 4.8', '>= 4.8.1'
+gem 'devise-async'
+gem 'devise_saml_authenticatable'
+gem 'devise-token_authenticatable'
+gem "bootstrap-sass"

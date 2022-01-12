@@ -1,5 +1,9 @@
 {
   "name": "Nexus",
   "private": true,
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "webpack": "^5.65.0",
+    "webpack-dev-server": "^4.7.2"
+  }
 }
