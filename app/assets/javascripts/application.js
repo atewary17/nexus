@@ -14,3 +14,11 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+//= require purecounter.js
+//= require aos.js
+//= require bootstrap.bundle.min.js
+//= require glightbox.min.js
+//= require isotope.pkgd.min.js
+//= require swiper-bundle.min.js
+//= require validate.js
+//= require main.js
