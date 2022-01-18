@@ -1,5 +1,6 @@
 class LandingController < ApplicationController
 
+  before_action :authenticate_user!, :except => [:index]
   respond_to :json, :html
   # layout :determine_layout
   
@@ -7,5 +8,6 @@ class LandingController < ApplicationController
   end
 
   def about_us
+    @users = User.all
   end
 end

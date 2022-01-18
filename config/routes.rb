@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'landing/index'
+  devise_for :users
   root 'landing#index'
   get 'landing/about_us'
 end
