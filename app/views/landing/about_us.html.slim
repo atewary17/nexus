@@ -4,3 +4,9 @@ html
 h1 Welcome to the About Us page
 
 p This page is using slim lang
+
+= @users.pluck(:id, :email)
+
+br
+
+= link_to 'sign_out', destroy_user_session_path, method: :delete
