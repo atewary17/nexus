@@ -7,6 +7,7 @@ class HomeController < ApplicationController
     end
   
     def about_us
-      @users = User.all
+      user = current_user
+      @email = user.email
     end
 end
