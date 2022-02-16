@@ -9,4 +9,7 @@ class HomeController < ApplicationController
     def about_us
       @users = User.all
     end
+
+    def services
+    end  
 end

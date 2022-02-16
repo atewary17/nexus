@@ -1,12 +1,13 @@
 doctype html
 html
-
-h1 Welcome to the About Us page
-
-p This page is using slim lang
-
-= @users.pluck(:id, :email)
-
+head 
+body 
 br
+
+    div class="container"
+      div class="row gx-0"
+        h3Expedita Welcome #{@email} we are testing with the finance news feeds, Lets find out what is going on !!!
+        br
+        <iframe  width="50%" height="700px" src="https://news.abplive.com/sharewidget/live-tv.html" frameBorder="0" scrolling="no" loading="lazy"></iframe>
 
 = link_to 'sign_out', destroy_user_session_path, method: :delete
