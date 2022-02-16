@@ -1,0 +1,28 @@
+.row.gy-5
+  .col-lg-8
+    .row.gy-4
+      .col-md-6
+        .info-box
+      .col-md-6
+        .info-box
+      .col-md-6
+        .info-box
+      .col-md-6
+        .info-box
+  .col-lg-4
+    h3 class="display-4",align="center" Nexus
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      div class="form-group mb-3"
+        .field
+          = f.label :email
+          = f.email_field :email, autofocus: true,required: true, autocomplete: "email"
+      div class="form-group mb-3"
+        .field
+          = f.label :password
+          = f.password_field :password,required: true, autocomplete: "current-password"
+      div class="custom-control custom-checkbox mb-3"
+        .field
+          = f.check_box :remember_me
+          = f.label :remember_me
+        .actions
+          = f.submit "Log in"
