@@ -1,28 +1,45 @@
-.row.gy-5
-  .col-lg-8
-    .row.gy-4
-      .col-md-6
-        .info-box
-      .col-md-6
-        .info-box
-      .col-md-6
-        .info-box
-      .col-md-6
-        .info-box
-  .col-lg-4
-    h3 class="display-4",align="center" Nexus
-    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-      div class="form-group mb-3"
-        .field
-          = f.label :email
-          = f.email_field :email, autofocus: true,required: true, autocomplete: "email"
-      div class="form-group mb-3"
-        .field
-          = f.label :password
-          = f.password_field :password,required: true, autocomplete: "current-password"
-      div class="custom-control custom-checkbox mb-3"
-        .field
-          = f.check_box :remember_me
-          = f.label :remember_me
-        .actions
-          = f.submit "Log in"
+doctype html
+html lang="en"
+div class="container" 
+  header.section-header
+    header.section-header
+      p
+        | Login to you account
+  .row.gy-4
+    .col-lg-6
+    .col-lg-6
+      div class="card"
+        link[rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous"]
+        .col-md-10.col-lg-10.ml-auto
+          = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+            .row
+              .container
+                .fontuser
+                  = f.label :email
+                    b
+                      | EmailAddress
+                  = f.email_field :email, autofocus: true,required: true, autocomplete: "email", placeholder: "Enter email address", type: "text"
+                  i.fa.fa-envelope.fa-lg
+                .fontuser
+                  = f.label :password
+                    b
+                      | Password 
+                  = f.password_field :password, required: true, autocomplete: "current-password", placeholder:"Enter password"
+                  i.fa.fa-lock.fa-lg
+                br
+                .fontuser
+                  = f.check_box :remember_me
+                  = f.label :remember_me
+                    b 
+                      | Remember me
+                br
+                .form-group.col-lg-12.mx-auto.mb-0
+                  span.font-weight-bold
+                  .actions
+                    = f.submit "Log in", class: "btn btn-primary btn-block py-2"
+              .form-group.col-lg-12.mx-auto.d-flex.align-items-center.my-4
+                .border-bottom.w-100.ml-5
+                span.px-2.small.text-muted.font-weight-bold.text-muted
+                  | OR
+                .border-bottom.w-100.mr-5
+              .form-group.col-lg-12.mx-auto
