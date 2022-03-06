@@ -60,3 +60,4 @@ gem 'devise-async'
 gem 'devise_saml_authenticatable'
 gem 'devise-token_authenticatable'
 gem "bootstrap-sass"
+gem 'jquery-rails'
