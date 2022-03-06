@@ -15,50 +15,52 @@ div class="container"
             .row
               .container
                 .fontuser
-                  label
+                  = f.label :first_name
                     b
                       | FirstName
-                  input[type="text" placeholder="Enter Firstname" name="fname" required]
+                  = f.text_field :first_name, required: true, autocomplete: "first_name", placeholder: "Enter first name", type: "text"
                   i.fa.fa-user.fa-lg
               .container
                 .fontuser
-                  label
+                  = f.label :last_name
                     b
                       | LastName
-                  input[type="text" placeholder="Enter Lastname" name="lname" required]
+                  = f.text_field :last_name, required: true, autocomplete: "last_name", placeholder: "Enter last name", type: "text"
                   i.fa.fa-user.fa-lg
               .container
                 .fontuser
-                  label
+                  = f.label :email
                     b
                       | EmailAddress
-                  input[type="text" placeholder="Enter emailaddress" name="uemail" required]
+                  = f.email_field :email, required: true, autocomplete: "email", placeholder: "Enter email address", type: "text"
                   i.fa.fa-envelope.fa-lg
               .container
                 .fontuser
-                  label
+                  = f.label :phone
                     b
                       | PhoneNumber
-                  input[type="text" placeholder="Enter phonenumber" name="pnumber" required]
+                  = f.text_field :phone, required: true, autocomplete: "phone", placeholder: "Enter phone number", pattern: "[789][0-9]{9}", type: "text"
                   i.fa.fa-phone.fa-lg
               .container
                 .fontuser
-                  label
+                  = f.label :password
                     b
                       | Password
-                  input[type="text" placeholder="Enter password" name="pasword" required]
+                  - if @minimum_password_length
+                    em  #{@minimum_password_length} characters minimum
+                  = f.password_field :password, autocomplete: "new-password"
                   i.fa.fa-lock.fa-lg
               .container
                 .fontuser
-                  label
+                  = f.label :password_confirmation
                     b
                       | Confirm Password
-                  input[type="text" placeholder="Enter password" name="pasword" required]
+                  = f.password_field :password_confirmation, autocomplete: "new-password"
                   i.fa.fa-lock.fa-lg
               .form-group.col-lg-12.mx-auto.mb-0
-                a.btn.btn-primary.btn-block.py-2[href="#"]
-                  span.font-weight-bold
-                    | Create your account
+                span.font-weight-bold
+                .actions
+                  = f.submit "Create your account", class: "btn btn-primary btn-block py-2"
               .form-group.col-lg-12.mx-auto.d-flex.align-items-center.my-4
                 .border-bottom.w-100.ml-5
                 span.px-2.small.text-muted.font-weight-bold.text-muted
