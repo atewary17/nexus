@@ -48,7 +48,9 @@ div class="container"
                       | Password
                   - if @minimum_password_length
                     em  #{@minimum_password_length} characters minimum
-                  = f.password_field :password, autocomplete: "new-password"
+                  = f.password_field :password, autocomplete: "new-password", id: "password"
+                  a class="figure" id="strength_human"
+                  a class="figure" id="strength_score"
                   i.fa.fa-lock.fa-lg
               .container
                 .fontuser
@@ -80,7 +82,60 @@ div class="container"
                   | Already Registered? 
                   a.text-primary.ml-2[href="#"]
                     | Login
-script
-  |  $(function() { $('input, select').on('focus', function() { $(this).parent().find('.input-group-text').css('border-color', '#80bdff'); }); $('input, select').on('blur', function() { $(this).parent().find('.input-group-text').css('border-color', '#ced4da'); }); }); 
-style
-  |  /* * * ========================================== * CUSTOM UTIL CLASSES * ========================================== * */ .border-md { border-width: 2px; } .btn-facebook { background: #405D9D; border: none; } .btn-facebook:hover, .btn-facebook:focus { background: #314879; } .btn-twitter { background: #42AEEC; border: none; } .btn-twitter:hover, .btn-twitter:focus { background: #1799e4; } /* * * ========================================== * FOR DEMO PURPOSES * ========================================== * */ /* Assign full width inputs*/ input[type=text], input[type=password] { width: 100%; padding: 12px 40px; margin: 8px 0; display: inline-block; border: 1px solid #ccc; box-sizing: border-box; } /* Set a style for the buttons*/ button { background-color: #4CAF50; color: white; padding: 14px 20px; margin: 8px 0; border: none; cursor: pointer; width: 100%; } /* Set a hover effect for the button*/ button:hover { opacity: 0.8; } /* Set extra style for the cancel button*/ .container { padding: 16px; } .fontuser { position: relative; } .fontuser i{ position: absolute; left: 15px; top: 40px; color: gray; } .fontpassword { position: relative; } .fontpassword i{ position: absolute; left: 15px; top: 40px; color: gray; } 
+javascript:
+  $(document).ready(function() {
+      $("#password").on("keypress keyup keydown", function() {
+        var pass = $(this).val();
+        $("#strength_human").text(checkPassStrength(pass));
+        $("#strength_score").text(scorePassword(pass));
+      });
+    });
+
+ function scorePassword(pass) {
+    var score = 0;
+    if (!pass)
+      return score;
+
+    
+    var letters = new Object();
+    for (var i=0; i<pass.length; i++) {
+        letters[pass[i]] = (letters[pass[i]] || 0) + 1;
+        score += 5.0 / letters[pass[i]];
+    }
+
+    
+    var variations = {
+        digits: /\d/.test(pass),
+        lower: /[a-z]/.test(pass),
+        upper: /[A-Z]/.test(pass),
+        nonWords: /\W/.test(pass),
+       }
+
+  variationCount = 0;
+    for (var check in variations) {
+        variationCount += (variations[check] == true) ? 1 : 0;
+    }
+    score += (variationCount - 1) * 10;
+
+    return parseInt(score);
+    }
+
+  function checkPassStrength(pass) {
+    var score = scorePassword(pass);
+      if (score > 80)
+          return "strong";
+      if (score > 60)
+          return "good";
+      if (score >= 30)
+          return "weak";
+      return "";
+    } 
+
+style  
+
+  #password {
+      font-size: 1.2em;
+      width: 100%;
+    }
+
+  
